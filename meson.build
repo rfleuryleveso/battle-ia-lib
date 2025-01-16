@@ -12,6 +12,7 @@ executable_sources = ['./src/main.c']
 inc_dir = include_directories('/usr/local/include')
 #include_dir = include_directories('./include')
 
+
 executable(
   'battle_c_bot',
   executable_sources,

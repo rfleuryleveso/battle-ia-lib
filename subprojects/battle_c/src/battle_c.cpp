@@ -114,6 +114,10 @@ BC_ShootResult bc_shoot(BC_Connection *connection, double angle) {
     result.target_destroyed = shoot_result.target_destroyed();
   }
 
+  if (shoot_result.has_fail_reason()) {
+    result.fail_reason = (BC_ShootResultFailReason)shoot_result.fail_reason();
+  }
+
   return result;
 }
 
@@ -163,6 +167,8 @@ BC_List *bc_ll_next(BC_List *linked_list) {
 void *bc_ll_value(BC_List *linked_list) {
   return (void *)(((LinkedList *)linked_list)->Value());
 }
+
+void bc_ll_free(BC_List *linked_list) { auto ll = (LinkedList *)linked_list; }
 
 void bc_set_game_ended_handler(
     BC_Connection *connection,
